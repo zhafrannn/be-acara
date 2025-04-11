@@ -15,6 +15,9 @@ export default function docs(app: Express){
         "utf-8"
     );
 
+    /**
+     * ketika ada URL yang mengarah pada /api-docs maka jalankan swagger nya
+     */
     app.use(
         "/api-docs", 
         swaggerUi.serve, 

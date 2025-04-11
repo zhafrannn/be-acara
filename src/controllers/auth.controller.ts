@@ -6,6 +6,9 @@ import { encrypt } from "../utils/encryption";
 import { generateToken } from "../utils/jwt";
 import { IReqUser } from "../middlewares/auth.middleware";
 
+/**
+ * TRegister ini untuk mendefinisikan struktur data yang diharapkan dari FE saat nanti melakukan registrasi
+ */
 type TRegister = {
     fullName : string;
     userName : string;
@@ -29,9 +32,18 @@ const registerValidateSchema = Yup.object({
 
 export default {
     async register(req: Request, res:Response) {
+        /**
+         * Disini req.body mengambil data Request dari FE
+         * Lalu, as unknown as digunakan untuk casting agar cocok dengan TRegister
+         * as unknown ini memaksa TypeScript ini untuk mempercayai tipe data yang dikirimkan FE sama dengan tipe data TRegister
+         */
         const {fullName, userName, email, password, confirmPassword} = req.body as unknown as TRegister;
 
         try { 
+            /**
+             * registerValidateSchema sedang melakukan validasi untuk setiap properti yang nanti didapat dari Request
+             * validasi ini menggunakan package Yup
+             */
             await registerValidateSchema.validate({
                 fullName,
                 userName,
@@ -45,12 +57,12 @@ export default {
                 userName,
                 email,
                 password,
-            })
+            });
 
             res.status(200).json({
                 message: "success registration!",
                 data : result,
-            })
+            });
         } catch (error) {
             const err = error as unknown as Error;
             res.status(400).json({
@@ -128,7 +140,8 @@ export default {
          */
         try {
             const user = req.user;
-            const result = await UserModel.findById(user?.id);
+            //penggunaan '?' disini agar ketika id dari user tidak ditemukan tidak akan terjadi error, hanya akan menjadi undifined
+            const result = await UserModel.findById(user?.id); 
 
             res.status(200).json({
                 message: "Success get user profile",

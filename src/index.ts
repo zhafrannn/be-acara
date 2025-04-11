@@ -10,12 +10,20 @@ import docs from "./docs/route";
 async function init () {
     try {
         const result = await db();
-
         console.log("database status ", result);
 
-        
         const app = express();
 
+        /**
+         * cors : Cross-Origin Resource Sharing
+         * Adalah mekanisme keamanan di browser yang mengatur apakah suatu FE (origin A) boleh mengakses BE (origin B).
+         * contoh untuk mengizinkan localhost:5000 mengakses routes origin saat ini(localhost:3000)
+         * app.use(cors({
+            origin: "http://localhost:5000", // hanya izinkan frontend ini
+            credentials: true, // kalau kamu pakai cookie/token via header
+           }));
+         * jika seperti contoh dibawah maka semua origin dapat mengakses routes pada origin saat ini
+         */
         app.use(cors())
         app.use(bodyParser.json());
 
