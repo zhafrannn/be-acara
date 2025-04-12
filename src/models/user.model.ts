@@ -82,12 +82,13 @@ UserSchema.post("save", async function(doc, next) {
 
 
         await sendEmail({
-            from: "admin-acara@noreply.com",
+            from: "zhafrannn@zohomail.com",
             to: user.email,
             subject: "Aktivasi Akun Anda!",
             html: contentMail,
         });
 
+        
           
     } catch (error) {
         console.log(error);

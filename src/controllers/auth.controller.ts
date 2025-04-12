@@ -59,6 +59,10 @@ export default {
     async register(req: Request, res:Response) {
         /**
          #swagger.tags = ['Auth']
+         #swagger.requestBody = {
+            required: true,
+            schema: {$ref: "#/components/schemas/RegisterRequest"}
+         }
          */
         const {fullName, username, email, password, confirmPassword} = req.body as unknown as TRegister;
 
@@ -191,7 +195,7 @@ export default {
          }
          */
         try {
-            const { code } = req.body as {code: string};
+            const { code } = req.body as unknown as {code: string};
 
             const user = await UserModel.findOneAndUpdate(
                 {

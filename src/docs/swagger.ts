@@ -26,8 +26,8 @@ const doc = {
         },
         schemas: {
             LoginRequest: {
-                identifier: "zhafran848@mail.com",
-                password: "123hafran",
+                identifier: "sungjinwoo",
+                password: "Asdqwe123",
             },
             RegisterRequest: {
                 fullName: "Sung Jin Woo",
