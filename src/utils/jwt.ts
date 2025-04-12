@@ -18,7 +18,7 @@ export interface IUserToken
         | "email" 
         | "fullName" 
         | "profilePicture" 
-        | "userName"
+        | "username"
     > {
         id? : Types.ObjectId;
     }

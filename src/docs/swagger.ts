@@ -29,6 +29,17 @@ const doc = {
                 identifier: "zhafran848@mail.com",
                 password: "123hafran",
             },
+            RegisterRequest: {
+                fullName: "Sung Jin Woo",
+                username: "sungjinwoo",
+                email: "sjw2024@yopmail.com",
+                password: "Asdqwe123",
+                confirmPassword: "Asdqwe123",
+
+            },
+            ActivationRequest: {
+                code: "abcdef",
+            }
         },
     },
 };
