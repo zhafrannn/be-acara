@@ -3,7 +3,6 @@ import bodyParser from "body-parser";
 import cors from "cors";
 
 import router from "./routes/api";
-
 import db from "./utils/database";
 import docs from "./docs/route";
 
@@ -16,7 +15,7 @@ async function init () {
 
         /**
          * cors : Cross-Origin Resource Sharing
-         * Adalah mekanisme keamanan di browser yang mengatur apakah suatu FE (origin A) boleh mengakses BE (origin B).
+         * Adalah mekanisme keamanan di browser yang mengatur apakah suatu origin (misal dari FE) boleh mengakses origin saat ini.
          * contoh untuk mengizinkan localhost:5000 mengakses routes origin saat ini(localhost:3000)
          * app.use(cors({
             origin: "http://localhost:5000", // hanya izinkan frontend ini
