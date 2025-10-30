@@ -11,13 +11,17 @@ export const evenetDAO = Yup.object({
   banner: Yup.string().required(),
   isFeatured: Yup.boolean().required(),
   isOnline: Yup.boolean().required(),
-  isPublished: Yup.boolean(),
+  isPublish: Yup.boolean(),
   category: Yup.string().required(),
   slug: Yup.string(),
   createdBy: Yup.string().required(),
   createdAt: Yup.string(),
   updatedAt: Yup.string(),
-  location: Yup.object().required(),
+  location: Yup.object().shape({
+    region: Yup.number(),
+    coordinates: Yup.array(),
+    address: Yup.string(),
+  }),
 });
 
 export type TEvent = Yup.InferType<typeof evenetDAO>;
@@ -62,7 +66,7 @@ const EventSchema = new Schema<Event>(
       type: Schema.Types.Boolean,
       required: true,
     },
-    isPublished: {
+    isPublish: {
       type: Schema.Types.Boolean,
       default: false,
     },
@@ -83,6 +87,9 @@ const EventSchema = new Schema<Event>(
         coordinates: {
           type: [Schema.Types.Number],
           default: [0, 0],
+        },
+        address: {
+          type: Schema.Types.String,
         },
       },
     },
