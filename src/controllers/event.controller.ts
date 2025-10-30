@@ -83,7 +83,7 @@ export default {
   async remove(req: IReqUser, res: Response) {
     try {
       const { id } = req.params;
-      const result = await EventModel.findByIdAndUpdate(id, {
+      const result = await EventModel.findByIdAndDelete(id, {
         new: true,
       });
       response.success(res, result, "success remove an event");
