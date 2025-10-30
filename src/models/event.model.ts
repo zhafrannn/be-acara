@@ -77,11 +77,13 @@ const EventSchema = new Schema<Event>(
     },
     location: {
       type: {
-        type: Schema.Types.Number,
-      },
-      coordinates: {
-        type: [Schema.Types.Number],
-        default: [0, 0],
+        region: {
+          type: Schema.Types.Number,
+        },
+        coordinates: {
+          type: [Schema.Types.Number],
+          default: [0, 0],
+        },
       },
     },
   },
