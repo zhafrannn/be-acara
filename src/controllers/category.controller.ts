@@ -62,6 +62,11 @@ export default {
     try {
       const { id } = req.params;
       const result = await CategoryModel.findById(id);
+
+      if (!result) {
+        return response.notFound(res, "category not found");
+      }
+
       response.success(res, result, "success find one category");
     } catch (error) {
       response.error(res, error, "failed find one category");
