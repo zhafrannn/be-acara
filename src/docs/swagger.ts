@@ -60,6 +60,18 @@ const doc = {
         isFeatured: false,
         isPublish: false,
       },
+      CreateBannerRequest: {
+        title: "Banner - Title",
+        image: "banner - imageUrl",
+        isShow: false,
+      },
+      CreateTicketRequest: {
+        price: 0,
+        name: "Ticket - name",
+        events: "6903f0c152819c548ec74538",
+        description: "Ticket - description",
+        quantity: 0,
+      },
       RemoveMediaRequest: {
         fileUrl: "",
       },
