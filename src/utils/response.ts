@@ -10,7 +10,7 @@ type Pagination = {
 
 export default {
   success(res: Response, data: any, message: string) {
-    res.status(200).json({
+    return res.status(200).json({
       meta: {
         status: 200,
         message,
@@ -21,7 +21,7 @@ export default {
 
   error(res: Response, error: unknown, message: string) {
     if (error instanceof Yup.ValidationError) {
-      res.status(400).json({
+      return res.status(400).json({
         meta: {
           status: 400,
           message,
@@ -32,7 +32,7 @@ export default {
       });
     }
     if (error instanceof mongoose.Error) {
-      res.status(500).json({
+      return res.status(500).json({
         meta: {
           status: 500,
           message: error.message,
@@ -50,7 +50,7 @@ export default {
         data: _err,
       });
     }
-    res.status(500).json({
+    return res.status(500).json({
       meta: {
         status: 500,
         message,
@@ -60,7 +60,7 @@ export default {
   },
 
   unauthorized(res: Response, message: string = "unauthorized") {
-    res.status(403).json({
+    return res.status(403).json({
       meta: {
         status: 403,
         message,
@@ -70,7 +70,7 @@ export default {
   },
 
   notFound(res: Response, message: string = "not found") {
-    res.status(404).json({
+    return res.status(404).json({
       meta: {
         status: 404,
         message,
@@ -85,7 +85,7 @@ export default {
     pagination: Pagination,
     message: string
   ) {
-    res.status(200).json({
+    return res.status(200).json({
       meta: {
         status: 200,
         message,

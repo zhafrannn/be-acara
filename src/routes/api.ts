@@ -24,7 +24,7 @@ router.post("/auth/activation", authController.activation);
 // Order
 router.post(
   "/orders",
-  [authMiddleware, aclMiddleware([ROLES.MEMBER])],
+  [authMiddleware, aclMiddleware([ROLES.MEMBER, ROLES.ADMIN])],
   orderController.create
 );
 

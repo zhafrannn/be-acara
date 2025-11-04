@@ -36,7 +36,9 @@ export default {
       const result = await OrderModel.create(payload);
       response.success(res, result, "success create an order");
     } catch (error) {
-      response.error(res, error, "failed create order");
+      console.log(`error from controller`);
+
+      response.error(res, error, "error from controller");
     }
   },
   async findAll(req: IReqUser, res: Response) {
