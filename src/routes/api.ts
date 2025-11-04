@@ -22,7 +22,11 @@ router.get("/auth/me", authMiddleware, authController.me);
 router.post("/auth/activation", authController.activation);
 
 // Order
-// router.post("/orders", authMiddleware, orderController.create);
+router.post(
+  "/orders",
+  [authMiddleware, aclMiddleware([ROLES.MEMBER])],
+  orderController.create
+);
 
 // Banner
 router.post(
