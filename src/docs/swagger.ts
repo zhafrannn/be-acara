@@ -72,6 +72,12 @@ const doc = {
         description: "Ticket - description",
         quantity: 0,
       },
+      CreateOrderRequest: {
+        createdBy: "68e768c42c156e7115029e08",
+        events: "690434138ebfecb39580da4e",
+        ticket: "69089416887e8e1f18ad2b4b",
+        quantity: 2,
+      },
       RemoveMediaRequest: {
         fileUrl: "",
       },
