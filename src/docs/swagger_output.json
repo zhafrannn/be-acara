@@ -121,7 +121,7 @@
     "/orders": {
       "post": {
         "tags": [
-          "Orders"
+          "Order"
         ],
         "description": "",
         "responses": {
@@ -152,7 +152,7 @@
       },
       "get": {
         "tags": [
-          "Orders"
+          "Order"
         ],
         "description": "",
         "parameters": [
@@ -193,7 +193,7 @@
     "/orders/{orderId}": {
       "get": {
         "tags": [
-          "Orders"
+          "Order"
         ],
         "description": "",
         "parameters": [
@@ -219,7 +219,7 @@
       },
       "delete": {
         "tags": [
-          "Orders"
+          "Order"
         ],
         "description": "",
         "parameters": [
@@ -275,7 +275,7 @@
     "/orders/{orderId}/pending": {
       "put": {
         "tags": [
-          "Orders"
+          "Order"
         ],
         "description": "",
         "parameters": [
@@ -303,7 +303,7 @@
     "/orders/{orderId}/cancelled": {
       "put": {
         "tags": [
-          "Orders"
+          "Order"
         ],
         "description": "",
         "parameters": [
@@ -311,6 +311,47 @@
             "name": "orderId",
             "in": "path",
             "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": {}
+          }
+        ]
+      }
+    },
+    "/orders-history": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
             "schema": {
               "type": "string"
             }
@@ -1379,8 +1420,8 @@
             "type": "object",
             "properties": {
               "region": {
-                "type": "string",
-                "example": "region id"
+                "type": "number",
+                "example": 3273
               },
               "coordinates": {
                 "type": "array",
@@ -1466,10 +1507,6 @@
       "CreateOrderRequest": {
         "type": "object",
         "properties": {
-          "createdBy": {
-            "type": "string",
-            "example": "68e768c42c156e7115029e08"
-          },
           "events": {
             "type": "string",
             "example": "690434138ebfecb39580da4e"
@@ -1480,7 +1517,7 @@
           },
           "quantity": {
             "type": "number",
-            "example": 2
+            "example": 1
           }
         },
         "xml": {
