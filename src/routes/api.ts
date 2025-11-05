@@ -95,6 +95,17 @@ router.put(
   }]
   */
 );
+router.delete(
+  "/orders/:orderId",
+  [authMiddleware, aclMiddleware([ROLES.ADMIN])],
+  orderController.remove
+  /*
+  #swagger.tags = ['Orders']
+  #swagger.security = [{
+    "bearerAuth": {}
+  }]
+  */
+);
 
 // Banner
 router.post(

@@ -81,7 +81,7 @@ export default {
   async findOne(req: IReqUser, res: Response) {
     try {
       const { orderId } = req.params;
-      const result = await OrderModel.findById({ orderId });
+      const result = await OrderModel.findOne({ orderId });
       if (!result) {
         return response.notFound(res, "order not found");
       }
@@ -96,7 +96,7 @@ export default {
       const { orderId } = req.params;
       const userId = req.user?.id;
 
-      const order = await OrderModel.findById({ orderId, createdBy: userId });
+      const order = await OrderModel.findOne({ orderId, createdBy: userId });
       if (!order) return response.notFound(res, "order not found");
 
       if (order.status === OrderStatus.COMPLETED)
@@ -127,7 +127,7 @@ export default {
       );
 
       const ticket = await TicketModel.findById(order.ticket);
-      if (!ticket) return response.notFound(res, "ticket not found");
+      if (!ticket) return response.notFound(res, "ticket and order not found");
 
       await TicketModel.updateOne(
         {
@@ -181,12 +181,37 @@ export default {
         return response.notFound(res, "order not found");
       }
 
-      const result = await OrderModel.findByIdAndDelete(id, {
-        new: true,
-      });
+      const result = await OrderModel.findOneAndUpdate(
+        {
+          id,
+        },
+        {
+          new: true,
+        }
+      );
       response.success(res, result, "success remove one order");
     } catch (error) {
       response.error(res, error, "failed remove order");
+    }
+  },
+  async remove(req: IReqUser, res: Response) {
+    try {
+      const { orderId } = req.params;
+
+      const result = await OrderModel.findOneAndDelete(
+        {
+          orderId,
+        },
+        {
+          new: true,
+        }
+      );
+      if (!result) {
+        return response.notFound(res, "order not found");
+      }
+      response.success(res, result, "success remove one order");
+    } catch (error) {
+      response.error(res, error, "failed remove an order");
     }
   },
 };
