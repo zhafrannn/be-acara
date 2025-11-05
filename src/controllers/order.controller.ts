@@ -3,7 +3,7 @@ import { IPaginationQuery, IReqUser } from "../utils/interfaces";
 import response from "../utils/response";
 import { FilterQuery, isValidObjectId } from "mongoose";
 import OrderModel, {
-  orderDAO,
+  orderDTO,
   OrderStatus,
   TypeOrder,
   TypeVoucher,
@@ -19,7 +19,7 @@ export default {
         ...req.body,
         createdBy: userId,
       } as TypeOrder;
-      await orderDAO.validate(payload);
+      await orderDTO.validate(payload);
 
       const ticket = await TicketModel.findById(payload.ticket);
       if (!ticket) return response.notFound(res, "ticket not found");
