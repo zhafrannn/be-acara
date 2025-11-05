@@ -148,7 +148,7 @@ router.put(
   [authMiddleware, aclMiddleware([ROLES.MEMBER])],
   orderController.complete
   /*
-  #swagger.tags = ['Orders']
+  #swagger.tags = ['Order']
   #swagger.security = [{
     "bearerAuth": {}
   }]

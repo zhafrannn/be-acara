@@ -313,7 +313,7 @@
     "/orders/{orderId}/completed": {
       "put": {
         "tags": [
-          "Orders"
+          "Order"
         ],
         "description": "",
         "parameters": [
